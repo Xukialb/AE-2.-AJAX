@@ -52,4 +52,5 @@ document.getElementById("boton").addEventListener("click", function () {
     procesarPedido(jsonDoc);
 });
 
-enviarPeticionAsincrona();
+enviarPeticionAsincrona();  
+//no me sale
