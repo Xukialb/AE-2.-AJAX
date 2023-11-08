@@ -1,0 +1,17 @@
+
+body{
+     background-color: rgb(240, 171, 81);
+    text-align: left;
+    margin: auto;
+    width: 30%;
+    font-size: 18px;
+    font-family: sans-serif;
+}
+
+#boton{
+
+background-color: rgb(168, 90, 37);
+font-weight: bold;
+color: beige;
+
+}

@@ -1,5 +1,5 @@
-const URL_DESTINO = "http://localhost:5500/WsJavaScript/09_AJAX/"
-const RECURSO = "musica.json"
+const URL_DESTINO = "http://localhost:5500/AE-2.-AJAX"
+const RECURSO = "tamanios.json"
 
     function enviarPeticionAsincrona() {
 

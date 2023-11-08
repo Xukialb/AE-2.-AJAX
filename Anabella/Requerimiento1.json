@@ -1,0 +1,4 @@
+{
+"tamanio":[{"nombre": "chica", "precio":5}, {"nombre": "mediana", "precio": 10}, {"nombre": "grande", "precio": 15}],"ingredientes": [{"nombre": "provolone", "precio": 1}, 
+{"nombre": "olivas", "precio": 1}, {"nombre": "bacon", "precio": 1}, {"nombre": "pimiento", "precio": 1}]}
+
