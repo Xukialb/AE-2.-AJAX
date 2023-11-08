@@ -1,0 +1,37 @@
+{
+    "ingredientes": [
+      {
+        "nombre": "Queso mozzarella",
+        "precio": 1
+      },
+      {
+        "nombre": "Jamón",
+        "precio": 1
+      },
+      {
+        "nombre": "Pepperoni",
+        "precio": 1
+      },
+      {
+        "nombre": "Champiñones",
+        "precio": 1
+      },
+      {
+        "nombre": "Alcaparras",
+        "precio": 1
+      },
+      {
+        "nombre": "Pimientos verdes",
+        "precio": 1
+      },
+      {
+        "nombre": "Cebolla",
+        "precio": 1
+      },
+      {
+        "nombre": "Aceitunas",
+        "precio": 1
+      }
+    ]
+  }
+  

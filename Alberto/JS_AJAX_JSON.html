@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de pizza</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="js/funciones.js"></script>
+
+</head>
+
+<body>
+    <img src="img/image4.jpg" alt="" class="img">
+    <form name="formulario" id="formulario">
+        <legend>
+            <h1>Formulario de pedido de pizza:</h1>
+        </legend>
+
+        <table id="resultadoBusqueda">
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" name="nombre" id="nombre" class="text" title="Escribe quí tu nombre" autofocus /></td>
+            </tr>
+            <tr>
+                <td>Apellidos</td>
+                <td><input type="text" name="apellidos" id="apellidos" class="text" title="Escribe aquí tus apellidos" /></td>
+            </tr>
+            <tr>
+                <td>Dirección</td>
+                <td><input type="text" name="direccion" id="direccion" class="text" title="Escribe aquí tu dirección" /></td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><input type="text" name="telefono" id="telefono"class="text" title="Escribe aquí tu número de móvil" /></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" id="email" class="text" title="Escribe aquí tu email" /></td>
+            </tr>
+        </table><br />
+
+        <!-- Botones para radio
+        <label><b>Selecciona el tamaño de la pizza:</b></label><br />
+        <label class="flexbox">pequeña</label>
+        <input type="radio" name="tamanio" id="tamanio" value="pequenia"/>
+        <label class="flexbox">mediana</label>
+        <input type="radio" name="tamanio" id="tamanio" value="mediana"/>
+        <label class="flexbox">grande</label>
+        <input type="radio" name="tamanio" id="tamanio" value="grande"/><br /><br />
+        -->
+        <!--Checkbox
+        <label class="label"><b>Selecciona los ingredientes adicionales:</b></label><br />
+        <label class="flexbox">jamon</label>
+        <input type="checkbox" name="ingrediente" id="ingrediente" value="jamon" />
+        <label class="flexbox">mozzarella</label>
+        <input type="checkbox" name="ingrediente" id="ingrediente" value="mozzarella" />
+        <label class="flexbox">anchoas</label>
+        <input type="checkbox" name="ingrediente" id="ingrediente" value="anchoas" />
+        <label class="flexbox">pepperoni</label>
+        <input type="checkbox" name="ingrediente" id="ingrediente" value="pepperoni" /><br /><br />
+        -->
+        <!-- 
+        <input type="button" id="procesar" value="Pocesar Pedido" class="pedido">
+
+        <img src="img/image3.jpg" alt="" class="img">
+        -->
+    </form>
+
+    <button id="btnBuscarAsincrono" onclick="enviarPeticionAsincrona()">Refrescar</button>
+
+</body>
+
+</html>
