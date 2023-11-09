@@ -35,9 +35,64 @@ ingredientes escogidos. El precio de los ingredientes podrá ser diferente.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedido de pizza</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script type="text/javascript" src="js/funciones.js"></script>
 
 </head>
+
+<script type="application/javascript">
+
+    const URL_DESTINO = "http://localhost:5500/Alberto/Requerimiento1.html"
+    const RECURSO = "tamanios_ingredientes.json"
+
+    function enviarpeticionAjax() {
+        let xmlHttp = new XMLHttpRequest()
+        xmlHttp.open('GET', URL_DESTINO + RECURSO, true)//Asincrono
+        xmlHttp.send() //podemos poner null o no, es lo mismo
+
+        //esta funcion de callback se ejecutara cuando se haya procesado la respueta HTTP
+        xmlHttp.onload = function () {
+            procesarRespuesta(this.responseText)
+        }
+
+        xmlHttp.onerror = function () {
+            alert("No se pueden cargar los datos!")
+        }
+
+    }
+
+    function procesarRespuesta(jsonDoc) {
+        //Convertimos un texto a un objeto JSON
+        var objetoJson = JSON.parse(jsonDoc)
+
+        console.log(objetoJson)
+
+        var table = "<tr><th>Tamanio</th></tr>";
+        var arraytamanios = objetoJson.TAMANIOS;
+        var arrayingredientes = objetoJson.INGREDIENTES;
+
+
+        // Mostrar tamaños de pizza como botones de radio
+        var conTam = document.getElementById("tamanios");
+        var tamDiv = document.createElement("div");
+        tamDiv.innerHTML = "Elige un tamaño de pizza <br/>";
+
+        for (let i = 0; i < arrayTam.length; i++) {
+            var radioB = document.createElement("input");
+            radioB.type = "radio";
+            radioB.name = "tamañoPizza";
+            radioB.id = arrayTam[i].nombre;
+            radioB.value = arrayTam[i].nombre;
+
+            var radioL = document.createElement("label");
+            radioL.textContent = arrayTam[i].nombre;
+
+            tamDiv.appendChild(radioB);
+            tamDiv.appendChild(radioL);
+        }
+
+        conTam.appendChild(tamDiv);
+
+    }
+</script>
 
 <body>
     <img src="img/image4.jpg" alt="" class="img">
@@ -49,19 +104,23 @@ ingredientes escogidos. El precio de los ingredientes podrá ser diferente.
         <table id="resultadoBusqueda">
             <tr>
                 <td>Nombre</td>
-                <td><input type="text" name="nombre" id="nombre" class="text" title="Escribe quí tu nombre" autofocus /></td>
+                <td><input type="text" name="nombre" id="nombre" class="text" title="Escribe quí tu nombre" autofocus />
+                </td>
             </tr>
             <tr>
                 <td>Apellidos</td>
-                <td><input type="text" name="apellidos" id="apellidos" class="text" title="Escribe aquí tus apellidos" /></td>
+                <td><input type="text" name="apellidos" id="apellidos" class="text"
+                        title="Escribe aquí tus apellidos" /></td>
             </tr>
             <tr>
                 <td>Dirección</td>
-                <td><input type="text" name="direccion" id="direccion" class="text" title="Escribe aquí tu dirección" /></td>
+                <td><input type="text" name="direccion" id="direccion" class="text" title="Escribe aquí tu dirección" />
+                </td>
             </tr>
             <tr>
                 <td>Teléfono</td>
-                <td><input type="text" name="telefono" id="telefono"class="text" title="Escribe aquí tu número de móvil" /></td>
+                <td><input type="text" name="telefono" id="telefono" class="text"
+                        title="Escribe aquí tu número de móvil" /></td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -94,9 +153,14 @@ ingredientes escogidos. El precio de los ingredientes podrá ser diferente.
 
         <img src="img/image3.jpg" alt="" class="img">
         -->
+
+        <div id="tamanios"></div><br />
+        <div id="ingredientes"></div><br />
     </form>
 
-    <button id="btnBuscarAsincrono" onclick="enviarPeticionAsincrona()">Refrescar</button>
+
+
+    <button id="btnBuscarAsincrono" onclick="enviarPeticionAjax()">Refrescar</button>
 
 </body>
 

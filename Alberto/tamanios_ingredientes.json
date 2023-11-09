@@ -1,0 +1,47 @@
+{
+    "TAMANIOS": [
+      {
+        "nombre": "Pequeña",
+        "precio": 5
+      },
+      {
+        "nombre": "Mediana",
+        "precio": 10
+      },
+      {
+        "nombre": "Grande",
+        "precio": 15
+      },
+      {
+        "nombre": "Familiar",
+        "precio": 20
+      }
+    ],
+    "INGREDIENTES": [
+      {
+        "nombre": "Queso",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Pepperoni",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Jamón",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Champiñones",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Pimientos",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Aceitunas",
+        "precio": 1.00
+      }
+    ]
+  }
+  

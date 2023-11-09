@@ -14,8 +14,16 @@
 }
 
 .pedido {
-    margin-left: 180px;
+    margin-left: 50px;
     background-color: coral;
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+}
+
+.refrescar {
+    margin-left: 50px;
+    background-color: chartreuse;
     font-weight: bold;
     width: 150px;
     height: 50px;

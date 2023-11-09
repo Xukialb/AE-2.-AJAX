@@ -1,0 +1,214 @@
+<!--
+Requerimiento 1
+
+Se pide hacer una aplicación AJAX que gestione una pizzería como la actividad 1. 
+Puedes basarte en dicha actividad para reutilizar lo que consideres o para hacerte 
+una idea de lo que tienes que implementar junto a tu compañero. El formulario que 
+tendremos que usar será el mismo que en dicha actividad, consúltala para más información.
+
+La idea es simular un entorno de acceso a servidor para traer toda la información 
+que se necesite para cargar la página. La página cargará parte de los datos de manera 
+dinámica, concretamente los tamaños y los ingredientes. Dichos datos estarán en formato JSON, 
+por lo que habrá que tratarlos en el cliente para poder mostrarlos.
+
+Nada más terminar de cargar la página, se accederá mediante AJAX a datos en un fichero 
+del servidor para traer los tamaños de las pizzas y cargarlos dinámicamente. Al mismo tiempo, 
+nos traeremos los ingredientes que tenemos disponibles para mostrarlos en nuestra pizzería.
+
+También dispondremos de un botón de refrescar, de tal manera que cuando lo pulsemos haremos 
+una llamada de nuevo a nuestro servidor para traernos los posibles cambios de los datos de 
+nuestra aplicación.
+
+Requerimiento 2
+
+Si pulsamos el botón de procesar el pedido, la web mostrará el resultado del precio total de 
+la pizza. Para calcular dicho precio, el programa accederá mediante AJAX al servidor para traer 
+la información sobre el precio del tamaño de la pizza escogido, así como el precio de los 
+ingredientes escogidos. El precio de los ingredientes podrá ser diferente.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de pizza</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+
+
+<body>
+    <img src="img/image4.jpg" alt="" class="img">
+    <form name="formulario" id="formulario">
+        <legend>
+            <h1>Formulario de pedido de pizza:</h1>
+        </legend>
+
+        <table id="resultadoBusqueda">
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" name="nombre" id="nombre" class="text" title="Escribe quí tu nombre" autofocus />
+                </td>
+            </tr>
+            <tr>
+                <td>Apellidos</td>
+                <td><input type="text" name="apellidos" id="apellidos" class="text"
+                        title="Escribe aquí tus apellidos" /></td>
+            </tr>
+            <tr>
+                <td>Dirección</td>
+                <td><input type="text" name="direccion" id="direccion" class="text" title="Escribe aquí tu dirección" />
+                </td>
+            </tr>
+            <tr>
+                <td>Teléfono</td>
+                <td><input type="text" name="telefono" id="telefono" class="text"
+                        title="Escribe aquí tu número de móvil" /></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" id="email" class="text" title="Escribe aquí tu email" /></td>
+            </tr>
+        </table><br />
+
+        <div id="TAMANIOS"></div><br />
+        <div id="INGREDIENTES"></div><br />
+
+        <input type="button" id="procesar" value="Procesar Pedido" class="pedido">
+
+        <input type="button" id="refrescar" value="Refrescar" class="refrescar" onclick="peticionAjax()">
+        
+        <img src="img/image3.jpg" alt="" class="img">
+    </form>
+
+    <script type="text/javascript">
+        const URL_DESTINO = "http://localhost:5500/AE-2.-AJAX/Alberto/"
+        const RECURSO = "tamanios_ingredientes.json"
+    
+        function peticionAjax() {
+            let xmlHttp = new XMLHttpRequest()
+    
+            xmlHttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        procesarRespuesta(this.responseText)//Obtenemos el valor en texto
+                    } else {
+                        alert("No se ha podido cargar la peticion AJAX!")
+                    }
+                }
+            }
+    
+            xmlHttp.open('GET', URL_DESTINO + RECURSO, true)
+            xmlHttp.send(null)
+    
+        }
+    
+        //funcion que manipula el DOM para añadir a un DIV la respuesta del servidor
+        function procesarRespuesta(respuesta) {
+            var objetoJson = JSON.parse(respuesta);
+            console.log(objetoJson);
+    
+            var arrayTam = objetoJson.TAMANIOS;
+            var arrayIng = objetoJson.INGREDIENTES;
+    
+            // Mostrar tamaños de pizza como botones de radio
+            var conTam = document.getElementById("TAMANIOS");
+            var tamDiv = document.createElement("div");
+            tamDiv.innerHTML = "Elige un tamaño de pizza <br/>";
+    
+            for (let i = 0; i < arrayTam.length; i++) {
+                var radioB = document.createElement("input");
+                radioB.type = "radio";
+                radioB.name = "tamañoPizza";
+                radioB.id = arrayTam[i].nombre;
+                radioB.value = arrayTam[i].nombre;
+    
+                var radioL = document.createElement("label");
+                radioL.textContent = arrayTam[i].nombre;
+    
+                tamDiv.appendChild(radioB);
+                tamDiv.appendChild(radioL);
+            }
+    
+            conTam.appendChild(tamDiv);
+    
+            // Mostrar ingredientes como casillas de checkbox
+            var conIng = document.getElementById("INGREDIENTES");
+            var ingDiv = document.createElement("div");
+            ingDiv.innerHTML = "Selecciona los ingredientes de tu preferencia<br/>";
+    
+            for (let i = 0; i < arrayIng.length; i++) {
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "ingredientes";
+                checkbox.id = arrayIng[i].nombre;
+                checkbox.value = arrayIng[i].nombre;
+    
+                var label = document.createElement("label");
+                label.textContent = arrayIng[i].nombre;
+    
+                ingDiv.appendChild(checkbox);
+                ingDiv.appendChild(label);
+            }
+    
+            conIng.appendChild(ingDiv);
+        }
+    
+    </script>
+
+    <script type="application/json">
+        {
+    "TAMANIOS": [
+      {
+        "nombre": "Pequeña",
+        "precio": 5
+      },
+      {
+        "nombre": "Mediana",
+        "precio": 10
+      },
+      {
+        "nombre": "Grande",
+        "precio": 15
+      },
+      {
+        "nombre": "Familiar",
+        "precio": 20
+      }
+    ],
+    "INGREDIENTES": [
+      {
+        "nombre": "Queso",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Pepperoni",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Jamón",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Champiñones",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Pimientos",
+        "precio": 1.00
+      },
+      {
+        "nombre": "Aceitunas",
+        "precio": 1.00
+      }
+    ]
+  }
+  
+    </script>
+
+</body>
+
+</html>
