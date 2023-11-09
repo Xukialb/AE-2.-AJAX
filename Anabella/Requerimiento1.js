@@ -1,6 +1,6 @@
 const url = "Requerimiento1.json";
 
-function enviarPeticionAsincrona() {
+function enviarPeticionAsincrona(callback) {
     let xmlHttp = new XMLHttpRequest();
 
     xmlHttp.onreadystatechange = function () {
@@ -68,7 +68,3 @@ function procesarRespuesta(jsonDoc) {
 }
 
 enviarPeticionAsincrona();
-    
-
-
-

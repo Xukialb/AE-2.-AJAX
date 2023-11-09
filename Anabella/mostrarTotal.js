@@ -48,9 +48,5 @@ function procesarPedido(jsonDoc) {
     alert("El importe es: " + precioTotal + "€");
 }
 
-document.getElementById("boton").addEventListener("click", function () {
-    procesarPedido(jsonDoc);
-});
 
-enviarPeticionAsincrona(procesarPedido);  
-//no me sale
+
