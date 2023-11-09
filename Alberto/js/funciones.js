@@ -19,7 +19,7 @@ function peticionAjax() {
 
 }
 
-//funcion que manipula el DOM para añadir a un DIV la respuesta del servidor
+//funcion que manipula el DOM para añadir a los DIV la respuesta del servidor
 function procesarRespuesta(respuesta) {
     var objetoJson = JSON.parse(respuesta);
     console.log(objetoJson);
@@ -69,4 +69,5 @@ function procesarRespuesta(respuesta) {
 
     conIng.appendChild(ingDiv);
 }
+
 peticionAjax();
