@@ -1,35 +1,34 @@
-const URL_DESTINO = "http://localhost:5500/AE-2.-AJAX/Alberto/"
+const URL_DESTINO = "http://localhost:5500/Alberto/"
 const RECURSO = "tamanios_ingredientes.json"
 
-function enviarpeticionAjax() {
+function peticionAjax() {
     let xmlHttp = new XMLHttpRequest()
-    xmlHttp.open('GET', URL_DESTINO + RECURSO, true)//Asincrono
-    xmlHttp.send() //podemos poner null o no, es lo mismo
 
-    //esta funcion de callback se ejecutara cuando se haya procesado la respueta HTTP
-    xmlHttp.onload = function () {
-        procesarRespuesta(this.responseText)
+    xmlHttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
+                procesarRespuesta(this.responseText)//Obtenemos el valor en texto
+            } else {
+                alert("No se ha podido cargar la peticion AJAX!")
+            }
+        }
     }
 
-    xmlHttp.onerror = function () {
-        alert("No se pueden cargar los datos!")
-    }
+    xmlHttp.open('GET', URL_DESTINO + RECURSO, true)
+    xmlHttp.send(null)
 
 }
 
-function procesarRespuesta(jsonDoc) {
-    //Convertimos un texto a un objeto JSON
-    var objetoJson = JSON.parse(jsonDoc)
-    //Podemos hacer lo contrario con "JSON.stringify(obj)"
-    console.log(objetoJson)
+//funcion que manipula el DOM para añadir a un DIV la respuesta del servidor
+function procesarRespuesta(respuesta) {
+    var objetoJson = JSON.parse(respuesta);
+    console.log(objetoJson);
 
-    var table = "<tr><th>Tamanio</th></tr>";
-    var arraytamanios = objetoJson.TAMANIOS;
-    var arrayingredientes = objetoJson.INGREDIENTES;
-
+    var arrayTam = objetoJson.TAMANIOS;
+    var arrayIng = objetoJson.INGREDIENTES;
 
     // Mostrar tamaños de pizza como botones de radio
-    var conTam = document.getElementById("tamanios");
+    var conTam = document.getElementById("TAMANIOS");
     var tamDiv = document.createElement("div");
     tamDiv.innerHTML = "Elige un tamaño de pizza <br/>";
 
@@ -49,4 +48,25 @@ function procesarRespuesta(jsonDoc) {
 
     conTam.appendChild(tamDiv);
 
+    // Mostrar ingredientes como casillas de checkbox
+    var conIng = document.getElementById("INGREDIENTES");
+    var ingDiv = document.createElement("div");
+    ingDiv.innerHTML = "Selecciona los ingredientes de tu preferencia<br/>";
+
+    for (let i = 0; i < arrayIng.length; i++) {
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "ingredientes";
+        checkbox.id = arrayIng[i].nombre;
+        checkbox.value = arrayIng[i].nombre;
+
+        var label = document.createElement("label");
+        label.textContent = arrayIng[i].nombre;
+
+        ingDiv.appendChild(checkbox);
+        ingDiv.appendChild(label);
+    }
+
+    conIng.appendChild(ingDiv);
 }
+peticionAjax();
