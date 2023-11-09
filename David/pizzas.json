@@ -1,0 +1,29 @@
+{
+  "Pizzas": [
+    {
+      "nombre": "Grande",
+      "precio": 15
+    },
+    {
+      "nombre": "Mediana",
+      "precio": 10
+    },
+    {
+      "nombre": "Pequeña",
+
+      "precio": 5
+    }
+  ],
+  "Ingredientes": {
+    "lista": [
+    {"Nombre":"Tomate",
+    "Precio":2}, 
+    {"Nombre":"Queso",
+    "Precio":4},
+    {"Nombre":"Pepperoni",
+    "Precio":6},
+    {"Nombre": "Oregano",
+    "precio": 1}]
+
+  }
+}
