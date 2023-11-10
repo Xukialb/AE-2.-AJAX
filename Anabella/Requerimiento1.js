@@ -70,7 +70,39 @@ function procesarRespuesta(jsonDoc) {
 
 enviarPeticionAsincrona();
 
-let refresh = document.getElementById('refresh');
-refresh.addEventListener('click', _ => {
+let refresh = document.getElementById("refresh");
+refresh.addEventListener("click", _ => {
             location.reload();
 })
+
+function mostrarTotal() {
+    
+    let precioPizza = 0;
+
+  // Obtengo el tamaño de la pizza seleccionado
+    var tamanio = document.getElementsByName("tamanio");
+
+    for (let i = 0; i < tamanio.length; i++) {
+        if (tamanio[i].nombre.checked) {
+            
+                precioPizza == parseInt(tamanio.precio);
+          } 
+        }
+  
+
+  // Obtengo los ingredientes seleccionados
+    var ingredientes = document.getElementsByName("ingredientes");
+
+    let ingredientesPrecio = 0;
+
+    for (let i = 0; i < ingredientes.length; i++) {
+        if (ingredientes[i].nombre.checked) {
+            ingredientesPrecio += parseInt(ingredientes.precio);
+        }
+    }
+
+    let precioTotal = precioPizza + ingredientesPrecio;
+    alert("El importe es: " + precioTotal + "€");
+}
+
+document.getElementById("total").addEventListener("click", mostrarTotal);
