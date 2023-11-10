@@ -81,6 +81,71 @@ function procesarRespuesta(jsonDoc) {
     });
 
     function mostrarTotal() {
+        // Valido campos de datos obligatorios
+      if (nombre.value.trim() === "" || direccion.value.trim() === "") {
+        alert("Los campos de datos son obligatorios");
+        return false;
+  }
+
+  var numeroTelefono = telefono.value.trim();
+  var numTel = /^[0-9]{9}/;
+
+// Valido que el número de teléfono es obligatorio
+  if (numeroTelefono === "") {
+      alert("El campo de teléfono es obligatorio");
+      return false;
+  }
+
+// Valido que el número de teléfono tiene exactamente 9 dígitos
+  if (!numTel.test(numeroTelefono)){
+      alert("El número de teléfono debe tener nueve dígitos");
+      return false;
+}
+
+//Obtengo el valor del campo y eleimino espacios en blanco . Valido que el email es obligatorio
+  if (email.value.trim()==="") {
+      alert("El campo de email es obligatorio");
+      return false;
+}
+
+//Valido que los campos ingresados en el email son válidos
+  var correo = /^[A-Za-z0-9._-]+@[a-z]+\.[a-z]+$/;
+
+//Agrego una condición que permita mostrar un mensaje de alerta cuando el correo no es válido
+  if (!correo.test(email.value.trim())) {
+      alert("Ingresa una dirección de correo electrónico válida");
+      return false;
+  }  
+
+// Valido que se haya elegido un tamaño de pizza
+  var tamanio = document.getElementsByName("tamanio");
+  var seleccionTam = false;
+
+//Con el bucle for me aseguro de recorrer el array de tamaños
+  for (var i = 0; i < tamanio.length; i++) {
+      if (tamanio[i].checked) {
+      seleccionTam = true;
+      break;
+      }
+  }
+  if (!seleccionTam) {
+      alert("Debe seleccionar un tamaño de pizza");
+      return false;
+  }
+
+// Valido que se haya seleccionado al menos un ingrediente para la pizza
+  var ingredientes = document.getElementsByName("ingredientes");
+  var seleccionIng = false;
+      for (var i = 0; i < ingredientes.length; i++) {
+          if (ingredientes[i].checked) {
+              seleccionIng = true;
+              break;
+          }
+      }
+      if (!seleccionIng) {
+          alert("Debe seleccionar al menos un ingrediente");
+          return false;
+      }
         
         console.log("Función mostrar Total");
         let precioPizza = 0;
@@ -92,7 +157,7 @@ function procesarRespuesta(jsonDoc) {
             for (let i = 0; i < tamanio.length; i++) {
                 if (tamanio[i].checked) {
                         console.log("Tamaño seleccionado:", tamanio[i].value);
-                        precioPizza == parseInt(tamanio[i].precio);
+                        precioPizza = parseInt(tamanio[i].precio);
                 } 
                 }
             console.log("Precio de la pizza según el tamaño:", precioPizza);
