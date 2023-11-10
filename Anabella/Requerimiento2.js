@@ -1,6 +1,6 @@
-const url = "http://localhost:5500/Requerimiento1.json";
+const url = "http://localhost:5500/Anabella/";
 
-const url = "http://localhost:5500/Requerimiento1.json";
+const recurso = "Requerimiento1.json";
 
 function enviarPeticionAsincrona() {
     let xmlHttp = new XMLHttpRequest();
@@ -15,7 +15,7 @@ function enviarPeticionAsincrona() {
         }
     };
 
-    xmlHttp.open('GET', url, true);
+    xmlHttp.open('POST', url+recurso, true);
     xmlHttp.send();
 }
 
@@ -28,7 +28,7 @@ function procesarPedido(jsonDoc) {
     let precioPizza = 0;
 
     // Obtengo el tamaño de la pizza seleccionado
-    var tamPizza = document.getElementsByName("tamanio");
+    var tamPizza = document.getElementsByName("tamanio").value;
     for (let i = 0; i < tamPizza.length; i++) {
         if (tamPizza[i].checked) {
             precioPizza = parseInt(arrayTam[i].precio);
@@ -37,7 +37,7 @@ function procesarPedido(jsonDoc) {
 
     // Obtengo los ingredientes seleccionados
     let ingredientesPrecio = 0;
-    var ingSel = document.getElementsByName("ingredientes");
+    var ingSel = document.getElementsByName("ingredientes").value;
     for (let i = 0; i < ingSel.length; i++) {
         if (ingSel[i].checked) {
             ingredientesPrecio += parseInt(arrayIng[i].precio);
@@ -47,6 +47,6 @@ function procesarPedido(jsonDoc) {
     let precioTotal = precioPizza + ingredientesPrecio;
     alert("El importe es: " + precioTotal + "€");
 }
-
+document.getElementById("total").addEventListener("click", enviarPeticionAsincrona);
 
 

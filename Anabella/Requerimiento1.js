@@ -1,4 +1,5 @@
-const url = "Requerimiento1.json";
+const url= "http://localhost:5500/Anabella/";
+const recurso = "Requerimiento1.json";
 
 function enviarPeticionAsincrona(callback) {
     let xmlHttp = new XMLHttpRequest();
@@ -13,7 +14,7 @@ function enviarPeticionAsincrona(callback) {
         }
     };
 
-    xmlHttp.open('GET', url, true);
+    xmlHttp.open('GET', url+recurso, true);
     xmlHttp.send();
 }
 
@@ -68,3 +69,8 @@ function procesarRespuesta(jsonDoc) {
 }
 
 enviarPeticionAsincrona();
+
+let refresh = document.getElementById('refresh');
+refresh.addEventListener('click', _ => {
+            location.reload();
+})
