@@ -30,79 +30,91 @@ function procesarRespuesta(jsonDoc) {
     const tamDiv = document.createElement("div");
     tamDiv.innerHTML = "Elige un tamaño de pizza <br/>";
 
-    for (let i = 0; i < arrayTam.length; i++) {
-        let radioB = document.createElement("input");
-        radioB.type = "radio";
-        radioB.name = "tamanio";
-        radioB.id = arrayTam[i].nombre;
-        radioB.value = arrayTam[i].nombre;
+        for (let i = 0; i < arrayTam.length; i++) {
+            let radioB = document.createElement("input");
+            radioB.type = "radio";
+            radioB.name = "tamanio";
+            radioB.id = arrayTam[i].nombre;
+            radioB.value = arrayTam[i].nombre;
 
-        let radioL = document.createElement("label");
-        radioL.textContent = arrayTam[i].nombre;
+            let radioL = document.createElement("label");
+            radioL.textContent = arrayTam[i].nombre;
 
-        tamDiv.appendChild(radioB);
-        tamDiv.appendChild(radioL);
-    }
+            tamDiv.appendChild(radioB);
+            tamDiv.appendChild(radioL);
+        }
 
-    conTam.appendChild(tamDiv);
+        conTam.appendChild(tamDiv);
+        console.log(tamDiv);
 
     // Mostrar ingredientes como casillas de verificación
     let conIng = document.getElementById("contenedor2");
     const ingDiv = document.createElement("div");
     ingDiv.innerHTML = "Selecciona los ingredientes de tu preferencia<br/>";
 
-    for (let i = 0; i < arrayIng.length; i++) {
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.name = "ingredientes";
-        checkbox.id = arrayIng[i].nombre;
-        checkbox.value = arrayIng[i].nombre;
+        for (let i = 0; i < arrayIng.length; i++) {
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = "ingredientes";
+            checkbox.id = arrayIng[i].nombre;
+            checkbox.value = arrayIng[i].nombre;
 
-        let label = document.createElement("label");
-        label.textContent = arrayIng[i].nombre;
+            let label = document.createElement("label");
+            label.textContent = arrayIng[i].nombre;
 
-        ingDiv.appendChild(checkbox);
-        ingDiv.appendChild(label);
+            ingDiv.appendChild(checkbox);
+            ingDiv.appendChild(label);
+        }
+
+        conIng.appendChild(ingDiv);
+        console.log(ingDiv)
     }
 
-    conIng.appendChild(ingDiv);
-}
+    enviarPeticionAsincrona();
 
-enviarPeticionAsincrona();
+    document.addEventListener("DOMContentLoaded", function() {
+    let refresh = document.getElementById("refresh");
+    refresh.addEventListener("click", _ => {
+        location.reload();
+        
+    });
+    });
 
-let refresh = document.getElementById("refresh");
-refresh.addEventListener("click", _ => {
-            location.reload();
-})
+    function mostrarTotal() {
+        
+        console.log("Función mostrar Total");
+        let precioPizza = 0;
+      
 
-function mostrarTotal() {
-    
-    let precioPizza = 0;
+        // Obtengo el tamaño de la pizza seleccionado
+        var tamanio = document.getElementsByName("tamanio");
+        
+            for (let i = 0; i < tamanio.length; i++) {
+                if (tamanio[i].checked) {
+                        console.log("Tamaño seleccionado:", tamanio[i].value);
+                        precioPizza == parseInt(tamanio[i].precio);
+                } 
+                }
+            console.log("Precio de la pizza según el tamaño:", precioPizza);
 
-  // Obtengo el tamaño de la pizza seleccionado
-    var tamanio = document.getElementsByName("tamanio");
+    // Obtengo los ingredientes seleccionados
+        var ingredientes = document.getElementsByName("ingredientes");
 
-    for (let i = 0; i < tamanio.length; i++) {
-        if (tamanio[i].nombre.checked) {
-            
-                precioPizza == parseInt(tamanio.precio);
-          } 
-        }
-  
+        let ingredientesPrecio = 0;
 
-  // Obtengo los ingredientes seleccionados
-    var ingredientes = document.getElementsByName("ingredientes");
+            for (let i = 0; i < ingredientes.length; i++) {
+                if (ingredientes[i].checked) {
+                    console.log("Ingrediente seleccionado:", ingredientes[i].value);
+                    ingredientesPrecio += parseInt(ingredientes[i].precio);
+                }
+            }
+            console.log("Precio de los ingredientes seleccionados:", ingredientesPrecio);
 
-    let ingredientesPrecio = 0;
-
-    for (let i = 0; i < ingredientes.length; i++) {
-        if (ingredientes[i].nombre.checked) {
-            ingredientesPrecio += parseInt(ingredientes.precio);
-        }
+        let precioTotal = precioPizza + ingredientesPrecio;
+        alert("El importe es: " + precioTotal + "€");
+        console.log("Precio total:", precioTotal);
     }
 
-    let precioTotal = precioPizza + ingredientesPrecio;
-    alert("El importe es: " + precioTotal + "€");
-}
-
-document.getElementById("total").addEventListener("click", mostrarTotal);
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("total").addEventListener("click", mostrarTotal);
+    });
