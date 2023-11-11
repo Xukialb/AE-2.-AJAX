@@ -21,9 +21,9 @@
     {"Nombre":"Queso",
     "Precio":4},
     {"Nombre":"Pepperoni",
-    "Precio":6},
+    "Precio": 6},
     {"Nombre": "Oregano",
-    "precio": 1}]
+    "Precio": 15}]
 
   }
 }
