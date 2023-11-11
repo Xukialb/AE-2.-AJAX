@@ -148,14 +148,14 @@ function procesarRespuesta(jsonDoc) {
       }
         
         console.log("Función mostrar Total");
+
         let precioPizza = 0;
       
-
+        var tamanio = document.getElementsByName("tamanio")
         // Obtengo el tamaño de la pizza seleccionado
-        var tamanio = document.getElementsByName("tamanio");
-        
+             
             for (let i = 0; i < tamanio.length; i++) {
-                if (tamanio[i].checked) {
+                if (tamanio[i].checked === tamanio[i].nombre) {
                         console.log("Tamaño seleccionado:", tamanio[i].value);
                         precioPizza = parseInt(tamanio[i].precio);
                 } 
@@ -168,7 +168,7 @@ function procesarRespuesta(jsonDoc) {
         let ingredientesPrecio = 0;
 
             for (let i = 0; i < ingredientes.length; i++) {
-                if (ingredientes[i].checked) {
+                if (ingredientes[i].checked === ingredientes[i].nombre) {
                     console.log("Ingrediente seleccionado:", ingredientes[i].value);
                     ingredientesPrecio += parseInt(ingredientes[i].precio);
                 }
