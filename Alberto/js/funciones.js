@@ -35,7 +35,7 @@ function procesarRespuesta(respuesta) {
     for (let i = 0; i < arrayTam.length; i++) {
         var radioB = document.createElement("input");
         radioB.type = "radio";
-        radioB.name = "tamañoPizza";
+        radioB.name = "tamanioPizza";
         radioB.id = arrayTam[i].nombre;
         radioB.value = arrayTam[i].nombre;
 
@@ -69,5 +69,28 @@ function procesarRespuesta(respuesta) {
 
     conIng.appendChild(ingDiv);
 }
+
+function enviarPedido() {
+    var tamañoPizza = document.getElementById('tamanioPizza').value;
+    var ingredientes = document.getElementById('ingredientes').value;
+  
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'procesar_pedido.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var resultado = document.getElementById('resultado');
+          resultado.innerHTML = xhr.responseText;
+        } else {
+          console.error('Error en la solicitud.');
+        }
+      }
+    };
+  
+    var datos = 'tamañoPizza=' + tamañoPizza + '&ingredientes=' + ingredientes;
+    xhr.send(datos);
+  }
 
 peticionAjax();
