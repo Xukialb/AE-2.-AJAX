@@ -20,27 +20,27 @@
     "INGREDIENTES": [
       {
         "nombre": "Mozzarella",
-        "precio": 1.00
+        "precio": 1.5
       },
       {
         "nombre": "Pepperoni",
-        "precio": 1.00
+        "precio": 3.0
       },
       {
         "nombre": "Jamón",
-        "precio": 1.00
+        "precio": 2.5
       },
       {
         "nombre": "Champiñones",
-        "precio": 1.00
+        "precio": 2.0
       },
       {
         "nombre": "Pimientos",
-        "precio": 1.00
+        "precio": 1.0
       },
       {
         "nombre": "Aceitunas",
-        "precio": 1.00
+        "precio": 0.5
       }
     ]
   }
