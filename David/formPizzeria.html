@@ -4,47 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="formpizzeria.js"></script>
+    <link rel="stylesheet" href="css/req2.css">
     <title>Formulario de pedido</title>
 </head>
 
 <body>
-
+    <div id="contenedor">
+        <div id="topform">
     <form name = "formulario" id="formulario">
-        <legend><h2>Formulario de pedido</h2></legend>
+        <legend><h2 id="titulo">Formulario de pedido</h2></legend>
 
         <!--Datos personales-->
         <table>
             <tr>
                 <td>Nombre</td>
-                <td><input type="text" name="nombre" id="nombre" title = "Escribe quí tu nombre" autofocus/></td>
+                <td><input type="text" name="nombre" id="nombre" placeholder="Escribe quí tu nombre" autofocus/></td>
             </tr>
             <tr>
                 <td>Apellidos</td>
-                <td><input type="text" name="apellidos" id="apellidos" title="Escribe aquí tus apellidos"/></td>
+                <td><input type="text" name="apellidos" id="apellidos" placeholder="Escribe aquí tus apellidos"/></td>
             </tr>
             <tr>
                 <td>Dirección</td>
-                <td><input type="text" name="direccion" id="direccion" title="Escribe aquí tu dirección"/></td>
+                <td><input type="text" name="direccion" id="direccion" placeholder="Escribe aquí tu dirección"/></td>
             </tr>
             <tr>
                 <td>Teléfono</td>
-                <td><input type="number" name="telefono" id="telefono" title="Escribe aquí tu número de móvil"/></td>
+                <td><input type="number" name="telefono" id="telefono" placeholder="Escribe aquí tu número de móvil"/></td>
             </tr>            
         </table>
-        <br/>
-        <div id="dinamico">
-            <h4>PRUEBA</h4>    
-        </div>
+     </div>
+        <div id="bottomform">
+             
+        
 
-        <div id="boton">
-            <button type="button" id="refrescar">Refrescar</button>
-        </div>
-        <div id="botontotal">
-         <button type="button" id="total">Total</button>
+      
     </div>
      
     </form>
-
+    
+</div>
+<div id="botones">
+    <button type="button" id="refrescar">Refrescar</button>
+ <button type="button" id="total">Total</button>
+</div>
     
     
 </body>
