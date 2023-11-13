@@ -1,0 +1,34 @@
+{
+    "tamanos": [                                      
+     {
+        "nombre": "pequena",
+        "precio" : 5.99
+     },
+     {
+        "nombre": "mediana",
+        "precio" : 7.99
+    },
+    {
+        "nombre":  "grande",
+        "precio"  : 9.99
+    }
+],
+    "ingredientes":[
+     {
+        "nombre":  "champinones", 
+        "precio" : 1.50
+     },
+     {
+        "nombre":  "aceitunas", 
+        "precio" : 1.00
+    },
+    {
+        "nombre":  "salami",
+        "precio": 2.00
+    },
+    {
+        "nombre":  "beicon",
+        "precio": 2.50
+    }
+]
+}

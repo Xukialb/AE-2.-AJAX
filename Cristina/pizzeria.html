@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="pizzeria.js"></script>
+</head>
+<body >
+  
+
+   <!-- <div id="principal"align="center">--> 
+      
+    <h1>Pedido pizza</h1>
+
+    <form name="formulario" id="formulario" > 
+
+      <table > 
+
+        <tr> 
+          <td > Nombre </td> 
+         <td><input type="text"name="nombre" id="nombre"></td> 
+        </tr> 
+        <tr> 
+          <td >Telefono </td> 
+           <td><input type="text"  name="telefono" id="telefono"></td> 
+        </tr> 
+        <tr>  
+          <td>Email</td> 
+          <td> <input type="email" name="email" id="email"autocomplete="off" /></td>   
+        </tr> 
+        <tr>
+          <td>Direccion</td>   
+           <td><input type="direccion"name="direccion"id="direccion" /></td>
+        </tr>
+      </table> <br/>
+     
+      <div id="tamanoPizza"></div>
+      <br/>
+    
+      <div id="ingredientes"></div>
+      <button type="button" id="btnPagar">Pagar</button>
+    <button type="button" id="btnRefrescar">Refrescar</button>
+    </form>
+  </body>
+  </html>
